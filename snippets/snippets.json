@@ -133,5 +133,128 @@
             "free(ptr);"
         ],
         "description": "Allocates memory to a pointer variable using calloc(), then deallocates using free()."
+    },
+    "else if": {
+        "prefix": "else if",
+        "body": [
+            "else if ($1)",
+            "{",
+            "    $2",
+            "}"
+        ],
+        "description": "Code snippet for else-if statement"
+    },
+    "enum": {
+        "prefix": "enum",
+        "body": [
+            "enum ${$1}",
+            "{",
+            "    $2",
+            "};"
+        ],
+        "description": "Code snippet for enum"
+    },
+    "#ifndef": {
+        "prefix": "#ifndef",
+        "body": [
+            "#ifndef ${1:1}",
+            "$2",
+            "#endif // !$1"
+        ],
+        "description": "Code snippet for #ifndef"
+    },
+    "struct": {
+        "prefix": "struct",
+        "body": [
+            "typedef struct",
+            "{",
+            "    $1",
+            "} $0;"
+        ],
+        "description": "Code snippet for struct"
+    },
+    "#inc": {
+        "prefix": "#inc",
+        "body": [
+            "#include \"$1\""
+        ],
+        "description": "Code snippet for #include \" \""
+    },
+    "#inc<": {
+        "prefix": "#inc<",
+        "body": [
+            "#include <$1>"
+        ],
+        "description": "Code snippet for #include \" \""
+    },
+    "#def": {
+        "prefix": "#def",
+        "body": [
+            "#define \"$1\" \"$2\" "
+        ],
+        "description": "Code snippet for #define \" \""
+    },
+    "fun": {
+        "prefix": "fun",
+        "body": [
+            "${1|void,U8,U16,U32|} $2($3)",
+            "{",
+            "   $0",
+            "   return ;",
+            "}"
+        ],
+        "description": "static void fun"
+    },
+    "static fun": {
+        "prefix": "sfun",
+        "body": [
+            "static ${1|U8,U16,U32|} $2()",
+            "{",
+            "   $0",
+            "   return ;",
+            "}"
+        ],
+        "description": "static void fun"
+    },
+    "static var": {
+        "prefix": "svar",
+        "body": [
+            "static ${1|U8,U16,U32|} $0 = 0;"
+        ],
+        "description": "static var"
+    },
+    "sk debug": {
+        "prefix": "skde",
+        "body": [
+            "SK_DEBUG((\"$1 :>> ${2|%d,%s,0x%x,%p|}\\n\", $1));",
+            "$0"
+        ],
+        "description": "sk debug"
+    },
+    "sk error": {
+        "prefix": "sker",
+        "body": [
+            "SK_ERROR((\"$1 :>> ${2|%d,%s,0x%x,%p|}\\n\", $1));",
+            "$0"
+        ],
+        "description": "sk error"
+    },
+    "#if": {
+        "prefix": "#if",
+        "body": [
+            "#if ${1|0,1|} ",
+            "    ${0:${TM_SELECTED_TEXT}}",
+            "#endif // !$1"
+        ],
+        "description": "Code snippet for #if"
+    },
+    "#ifdef": {
+        "prefix": "#ifdef",
+        "body": [
+            "#ifdef $1 ",
+            "    ${0:${TM_SELECTED_TEXT}}",
+            "#endif // !$1"
+        ],
+        "description": "Code snippet for #ifdef"
     }
 }
